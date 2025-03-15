@@ -16,7 +16,7 @@ const AutoCompleteInput = () => {
     const [destination, setDestination] = useState('');
     const [showDirections, setShowDirections] = useState(false);
 
-    
+
     const handleButtonClick = () => {
         if (!origin || !destination) {
             alert('Por favor, insira origem e destino.');

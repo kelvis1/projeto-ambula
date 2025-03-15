@@ -19,12 +19,12 @@ const Directions = ({ origin, destination, setoriginlatilong, setdestinationlati
             }
 
             try {
-                
+
                 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
                 const response = await axios.get(`/api/directions`, {
                     params: { origin, destination }
-                }); 
-                
+                });
+
                 const data = response.data;
 
                 if (data.routes && data.routes.length > 0) {
@@ -34,7 +34,7 @@ const Directions = ({ origin, destination, setoriginlatilong, setdestinationlati
                     const durationInSeconds = data.routes[0].legs[0].duration.value;
                     const distanceInKm = distanceInMeters / 1000;
                     const estimatedPrice = (distanceInKm * 1.50).toFixed(2);
-                    
+
                     const hours = Math.floor(durationInSeconds / 3600);
                     const minutes = Math.floor((durationInSeconds % 3600) / 60);
                     const seconds = durationInSeconds % 60;
@@ -42,7 +42,7 @@ const Directions = ({ origin, destination, setoriginlatilong, setdestinationlati
                     const formattedDuration = `${hours > 0 ? hours + 'hora ' : ''}${minutes} minutos e ${seconds}  segundos`;
 
 
-                    
+
                     setoriginlatilong(start_locationlatlng);
                     setdestinationlatilong(end_locationlatlng);
                     setDuration(formattedDuration);
