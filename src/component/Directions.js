@@ -6,7 +6,8 @@ import { useState, useEffect } from 'react';
 
 const GoogleMapComponent = dynamic(() => import("./GoogleMapComponent"), { ssr: false });
 
-const Directions = ({ origin, destination }) => {
+const Directions = ({ origin, destination, setoriginlatilong, setdestinationlatilong }) => {
+
     const [duration, setDuration] = useState(null);
     const [distance, setDistance] = useState(null);
     const [price, setPrice] = useState(null);
@@ -27,6 +28,8 @@ const Directions = ({ origin, destination }) => {
                 const data = response.data;
 
                 if (data.routes && data.routes.length > 0) {
+                    const end_locationlatlng = data.routes[0].legs[0].end_location || null;
+                    const start_locationlatlng = data.routes[0].legs[0].start_location || null;
                     const distanceInMeters = data.routes[0].legs[0].distance.value;
                     const durationInSeconds = data.routes[0].legs[0].duration.value;
                     const distanceInKm = distanceInMeters / 1000;
@@ -38,6 +41,10 @@ const Directions = ({ origin, destination }) => {
 
                     const formattedDuration = `${hours > 0 ? hours + 'hora ' : ''}${minutes} minutos e ${seconds}  segundos`;
 
+
+                    
+                    setoriginlatilong(start_locationlatlng);
+                    setdestinationlatilong(end_locationlatlng);
                     setDuration(formattedDuration);
                     setDistance(distanceInKm);
                     setPrice(estimatedPrice);

@@ -3,13 +3,20 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 
+
+
+const GoogleMapComponent = dynamic(() => import("./GoogleMapComponent"), { ssr: false });
+const Directions = dynamic(() => import('./Directions'), { ssr: false });
+
 const AutoCompleteInput = () => {
+
     const [origin, setOrigin] = useState('');
+    const [originlatilong, setoriginlatilong] = useState(null);
+    const [destinetionlatilong, setdestinationlatilong] = useState(null);
     const [destination, setDestination] = useState('');
     const [showDirections, setShowDirections] = useState(false);
 
-    const Directions = dynamic(() => import('./Directions'), { ssr: false });
-
+    
     const handleButtonClick = () => {
         if (!origin || !destination) {
             alert('Por favor, insira origem e destino.');
@@ -54,11 +61,13 @@ const AutoCompleteInput = () => {
 
     return (
         <div>
+            <GoogleMapComponent origin={originlatilong} destination={destinetionlatilong} />
+
             <input id="origin" type="text" placeholder="Digite o ponto de partida" value={origin} onChange={(e) => setOrigin(e.target.value)} />
             <input id="destination" type="text" placeholder="Digite o destino" value={destination} onChange={(e) => setDestination(e.target.value)} />
             <button onClick={handleButtonClick}>Pesquisar</button>
 
-            {showDirections && <Directions origin={origin} destination={destination} />}
+            {showDirections && <Directions origin={origin} destination={destination} setoriginlatilong={setoriginlatilong} setdestinationlatilong={setdestinationlatilong} />}
         </div>
     );
 };
