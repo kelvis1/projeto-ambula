@@ -51,9 +51,17 @@ a {
   width: 80%;
 }
 
-.textocontainer{
+.textocontainer {
+  
   width: 20%;
+  padding: 7px;
+ 
 }
+
+.paper{
+  height: 100vh;
+}
+
 
 .origemtextfield{
   padding: 10px;
