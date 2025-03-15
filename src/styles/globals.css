@@ -1,12 +1,12 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #000000;
   }
 }
 
@@ -39,4 +39,30 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.mapacontainer{
+ display: flex;
+ flex-direction: row;
+ width: 100%;
+}
+
+.googlemapacontainer{
+  width: 80%;
+}
+
+.textocontainer{
+  width: 20%;
+}
+
+.origemtextfield{
+  padding: 10px;
+}
+
+.destinotextfield{
+ padding: 10px;
+}
+
+.buttonpesquisar{
+ padding: 10px;
 }
