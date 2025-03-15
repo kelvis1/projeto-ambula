@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 const containerStyle = {
   width: "100%",
-  height: "500px",
+  height: "100vh",
 };
 
 export default function GoogleMapComponent({ origin, destination }) {
