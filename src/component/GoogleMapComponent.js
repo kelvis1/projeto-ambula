@@ -36,7 +36,7 @@ export default function GoogleMapComponent({ origin, destination }) {
   return (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={origin || { lat: -23.55052, lng: -46.633308 }} // Padrão: São Paulo
+      center={origin || { lat:  38.7071, lng: -9.13549 }} // lisboa
       zoom={10}
       onLoad={(map) => setMap(map)}
     >
