@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import Paper from '@mui/material/Paper';
 
 const GoogleMapComponent = dynamic(() => import("./GoogleMapComponent"), {
   ssr: false,
@@ -68,6 +69,8 @@ const AutoCompleteInput = () => {
   return (
     <div className="mapacontainer">
       <div className="textocontainer">
+        <Paper className="paper" elevation={7}>
+
         <div className="origemtextfield">
           <TextField
             id="origin"
@@ -105,6 +108,7 @@ const AutoCompleteInput = () => {
             setdestinationlatilong={setdestinationlatilong}
           />
         )}
+        </Paper>
       </div>
       <div className="googlemapacontainer">
         <GoogleMapComponent
