@@ -13,7 +13,13 @@ export default function GoogleMapComponent({ origin, destination }) {
   const [map, setMap] = useState(null);
 
   useEffect(() => {
-    if (!origin || !destination || typeof origin !== "object" || typeof destination !== "object") return;
+    if (
+      !origin ||
+      !destination ||
+      typeof origin !== "object" ||
+      typeof destination !== "object"
+    )
+      return;
 
     const directionsService = new google.maps.DirectionsService();
 
@@ -36,7 +42,7 @@ export default function GoogleMapComponent({ origin, destination }) {
   return (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={origin || { lat:  38.7071, lng: -9.13549 }} // lisboa
+      center={origin || { lat: 38.7071, lng: -9.13549 }} // lisboa
       zoom={10}
       onLoad={(map) => setMap(map)}
     >
